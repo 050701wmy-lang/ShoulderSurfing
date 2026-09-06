@@ -7,6 +7,7 @@ import com.github.exopandora.shouldersurfing.api.client.event.TickEvent;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.ComputeTemporaryFirstPersonStateEventHandler;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.TickEventHandler;
 import com.github.exopandora.shouldersurfing.config.Config;
+import net.minecraft.util.Mth;
 
 public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 	public enum WhenAiming implements ComputeTemporaryFirstPersonStateEventHandler {
@@ -53,12 +54,13 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 		
 		private static boolean isSpaceConstrained(IShoulderSurfingCamera camera) {
 			var perspectiveConfig = Config.CLIENT.getPerspectiveConfig();
-			if (Math.abs(camera.getRenderOffset().x) < perspectiveConfig.getTemporaryFirstPersonOffsetXThreshold()) {
+			var cameraConfig = Config.CLIENT.getCameraConfig();
+			if (Math.abs(camera.getRenderOffset().x) < Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetXThreshold(), Math.abs(cameraConfig.getOffsetX()))) {
 				return true;
-			} else if (Math.abs(camera.getRenderOffset().y) < perspectiveConfig.getTemporaryFirstPersonOffsetYThreshold()) {
+			} else if (Math.abs(camera.getRenderOffset().y) < Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetYThreshold(), Math.abs(cameraConfig.getOffsetY()))) {
 				return true;
 			}
-			return Math.abs(camera.getRenderOffset().z) < perspectiveConfig.getTemporaryFirstPersonOffsetZThreshold();
+			return Math.abs(camera.getRenderOffset().z) < Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetZThreshold(), Math.abs(cameraConfig.getOffsetZ()));
 		}
 	}
 }
