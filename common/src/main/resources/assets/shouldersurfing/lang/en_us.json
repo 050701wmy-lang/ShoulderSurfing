@@ -237,7 +237,7 @@
   "${modId}.configuration.perspective.third_person_back_enabled": "Third person back enabled",
   "${modId}.configuration.perspective.third_person_back_enabled.tooltip": "Whether the third person back perspective is enabled.",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces": "Temporary first person in constrained spaces",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.tooltip": "Whether to switch to first person temporarily when space constrained.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.tooltip": "Whether to switch to first person perspective temporarily when entering areas with limited height. For example, small buildings or caves.",
   "${modId}.configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces": "Additional temporary first person time in constrained spaces",
   "${modId}.configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces.tooltip": "The additional time in ticks the perspective will stay temporary first person after leaving a constrained space.",
 
