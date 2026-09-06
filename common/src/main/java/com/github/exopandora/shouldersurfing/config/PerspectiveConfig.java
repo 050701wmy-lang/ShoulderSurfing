@@ -18,7 +18,7 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	private final ConfigValue<Perspective> defaultPerspective;
 	private final BooleanValue isPerspectivePersistent;
 	private final BooleanValue isTemporaryFirstPersonInConstrainedSpacesEnabled;
-	private final IntValue temporaryFirstPersonInConstrainedSpacesCooldown;
+	private final IntValue additionalTemporaryFirstPersonTimeInConstrainedSpaces;
 	private final DoubleValue temporaryFirstPersonOffsetXThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetYThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetZThreshold;
@@ -61,10 +61,10 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces")
 			.define("temporary_first_person_in_constrained_spaces", false);
 		
-		this.temporaryFirstPersonInConstrainedSpacesCooldown = builder
-			.comment("The time in ticks the temporary first person perspective will be enabled after leaving a constrained space.")
-			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces_cooldown")
-			.defineInRange("temporary_first_person_in_constrained_spaces_cooldown", 10, 0, Integer.MAX_VALUE);
+		this.additionalTemporaryFirstPersonTimeInConstrainedSpaces = builder
+			.comment("Additional temporary first person time in constrained spaces.")
+			.translation(MOD_ID + ".configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces")
+			.defineInRange("additional_temporary_first_person_time_in_constrained_spaces", 10, 0, Integer.MAX_VALUE);
 		
 		builder.push("temporary_first_person_offset_threshold");
 		
@@ -127,8 +127,8 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	}
 	
 	@Override
-	public int getTemporaryFirstPersonInConstrainedSpacesCooldown() {
-		return this.temporaryFirstPersonInConstrainedSpacesCooldown.get();
+	public int getAdditionalTemporaryFirstPersonTimeInConstrainedSpaces() {
+		return this.additionalTemporaryFirstPersonTimeInConstrainedSpaces.get();
 	}
 	
 	@Override

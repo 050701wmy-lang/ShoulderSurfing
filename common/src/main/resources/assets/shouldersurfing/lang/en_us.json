@@ -238,8 +238,8 @@
   "${modId}.configuration.perspective.third_person_back_enabled.tooltip": "Whether the third person back perspective is enabled.",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces": "Temporary first person in constrained spaces",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.tooltip": "Whether to switch to first person temporarily when space constrained.",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces_cooldown": "Temporary first person in constrained spaces cooldown",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces_cooldown.tooltip": "The time in ticks the temporary first person perspective will be enabled after leaving a constrained space.",
+  "${modId}.configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces": "Additional temporary first person time in constrained spaces",
+  "${modId}.configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces.tooltip": "The additional time in ticks the perspective will stay temporary first person after leaving a constrained space.",
 
   "${modId}.configuration.temporary_first_person_offset_threshold.button": "Edit",
   "${modId}.configuration.temporary_first_person_offset_threshold": "Temporary first person offset threshold",

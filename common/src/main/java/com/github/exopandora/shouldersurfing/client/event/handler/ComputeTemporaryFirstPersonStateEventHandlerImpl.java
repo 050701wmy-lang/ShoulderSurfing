@@ -7,7 +7,6 @@ import com.github.exopandora.shouldersurfing.api.client.event.TickEvent;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.ComputeTemporaryFirstPersonStateEventHandler;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.TickEventHandler;
 import com.github.exopandora.shouldersurfing.config.Config;
-import net.minecraft.util.Mth;
 
 public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 	public enum WhenAiming implements ComputeTemporaryFirstPersonStateEventHandler {
@@ -29,12 +28,12 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 		INSTANCE;
 		
 		private boolean isSpaceConstrained;
-		private int cooldown;
+		private int extendedTime;
 		
 		@Override
 		public void handle(ComputeTemporaryFirstPersonStateEvent event) {
 			if (!event.getResult()) {
-				event.setResult(this.isSpaceConstrained || this.cooldown > 0);
+				event.setResult(this.isSpaceConstrained || this.extendedTime > 0);
 			}
 		}
 		
@@ -45,9 +44,9 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 				var camera = IShoulderSurfing.getInstance().getCamera();
 				this.isSpaceConstrained = isSpaceConstrained(camera);
 				if (this.isSpaceConstrained) {
-					this.cooldown = perspectiveConfig.getTemporaryFirstPersonInConstrainedSpacesCooldown();
-				} else if (this.cooldown > 0) {
-					this.cooldown--;
+					this.extendedTime = perspectiveConfig.getAdditionalTemporaryFirstPersonTimeInConstrainedSpaces();
+				} else if (this.extendedTime > 0) {
+					this.extendedTime--;
 				}
 			}
 		}

@@ -17,7 +17,7 @@ public interface IPerspectiveConfig {
 	
 	boolean isTemporaryFirstPersonInConstrainedSpacesEnabled();
 	
-	int getTemporaryFirstPersonInConstrainedSpacesCooldown();
+	int getAdditionalTemporaryFirstPersonTimeInConstrainedSpaces();
 	
 	double getTemporaryFirstPersonOffsetXThreshold();
 	
