@@ -57,18 +57,21 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 		private static boolean isSpaceConstrained(IShoulderSurfingCamera camera) {
 			var perspectiveConfig = Config.CLIENT.getPerspectiveConfig();
 			var cameraConfig = Config.CLIENT.getCameraConfig();
-			var thresholdX = (float) Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetXThreshold(), Math.abs(cameraConfig.getOffsetX()));
-			var renderOffsetX = (float) Math.abs(camera.getRenderOffset().x);
+			var thresholdX = Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetXThreshold(), Math.abs(cameraConfig.getOffsetX()) - 0.0001);
+			var renderOffsetX = Math.abs(camera.getRenderOffset().x);
 			if (renderOffsetX < thresholdX) {
 				return true;
 			}
 			var thresholdY = (float) Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetYThreshold(), Math.abs(cameraConfig.getOffsetY()));
 			var renderOffsetY = (float) Math.abs(camera.getRenderOffset().y);
 			if (thresholdY < renderOffsetY) {
+			var thresholdY = Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetYThreshold(), Math.abs(cameraConfig.getOffsetY()) - 0.0001);
+			var renderOffsetY = Math.abs(camera.getRenderOffset().y);
+			if (renderOffsetY < thresholdY) {
 				return true;
 			}
-			var thresholdZ = (float) Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetZThreshold(), Math.abs(cameraConfig.getOffsetZ()));
-			var renderOffsetZ = (float) Math.abs(camera.getRenderOffset().z);
+			var thresholdZ = Math.min(perspectiveConfig.getTemporaryFirstPersonOffsetZThreshold(), Math.abs(cameraConfig.getOffsetZ()) - 0.0001);
+			var renderOffsetZ = Math.abs(camera.getRenderOffset().z);
 			return renderOffsetZ < thresholdZ;
 		}
 	}
