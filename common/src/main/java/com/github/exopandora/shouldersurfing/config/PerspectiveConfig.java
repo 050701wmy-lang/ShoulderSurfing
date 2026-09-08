@@ -18,7 +18,7 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	private final ConfigValue<Perspective> defaultPerspective;
 	private final BooleanValue isPerspectivePersistent;
 	private final BooleanValue isTemporaryFirstPersonInConstrainedSpacesEnabled;
-	private final IntValue additionalTemporaryFirstPersonTimeInConstrainedSpaces;
+	private final IntValue temporaryFirstPersonInConstrainedSpacesAdditionalTime;
 	private final DoubleValue temporaryFirstPersonOffsetXThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetYThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetZThreshold;
@@ -56,33 +56,36 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 			.translation(MOD_ID + ".configuration.perspective.third_person_back_enabled")
 			.define("third_person_back_enabled", true);
 		
+		builder.push("temporary_first_person_in_constrained_spaces");
+		
 		this.isTemporaryFirstPersonInConstrainedSpacesEnabled = builder
 			.comment("Whether to switch to first person temporarily when space constrained.")
-			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces")
-			.define("temporary_first_person_in_constrained_spaces", false);
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.enabled")
+			.define("enabled", false);
 		
-		this.additionalTemporaryFirstPersonTimeInConstrainedSpaces = builder
-			.comment("Additional temporary first person time in constrained spaces.")
-			.translation(MOD_ID + ".configuration.perspective.additional_temporary_first_person_time_in_constrained_spaces")
-			.defineInRange("additional_temporary_first_person_time_in_constrained_spaces", 10, 0, Integer.MAX_VALUE);
+		this.temporaryFirstPersonInConstrainedSpacesAdditionalTime = builder
+			.comment("The additional time in ticks the perspective will stay in temporary first person after leaving a constrained space.")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.additional_time")
+			.defineInRange("additional_time", 10, 0, Integer.MAX_VALUE);
 		
-		builder.push("temporary_first_person_offset_threshold");
+		builder.push("offset_threshold");
 		
 		this.temporaryFirstPersonOffsetXThreshold = builder
 			.comment("Temporary first person x-offset threshold.")
-			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_offset_threshold.offset_x")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_x")
 			.defineInRange("offset_x", 0.5D, 0, Double.MAX_VALUE);
 		
 		this.temporaryFirstPersonOffsetYThreshold = builder
 			.comment("Temporary first person y-offset threshold.")
-			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_offset_threshold.offset_y")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_y")
 			.defineInRange("offset_y", 0.0D, 0, Double.MAX_VALUE);
 		
 		this.temporaryFirstPersonOffsetZThreshold = builder
 			.comment("Temporary first person z-offset threshold.")
-			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_offset_threshold.offset_z")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_z")
 			.defineInRange("offset_z", 0.5D, 0, Double.MAX_VALUE);
 		
+		builder.pop();
 		builder.pop();
 		builder.pop();
 	}
@@ -127,8 +130,8 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	}
 	
 	@Override
-	public int getAdditionalTemporaryFirstPersonTimeInConstrainedSpaces() {
-		return this.additionalTemporaryFirstPersonTimeInConstrainedSpaces.get();
+	public int getTemporaryFirstPersonInConstrainedSpacesAdditionalTime() {
+		return this.temporaryFirstPersonInConstrainedSpacesAdditionalTime.get();
 	}
 	
 	@Override

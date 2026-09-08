@@ -28,12 +28,12 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 		INSTANCE;
 		
 		private boolean isSpaceConstrained;
-		private int extendedTime;
+		private int additionalTime;
 		
 		@Override
 		public void handle(ComputeTemporaryFirstPersonStateEvent event) {
 			if (!event.getResult()) {
-				event.setResult(this.isSpaceConstrained || this.extendedTime > 0);
+				event.setResult(this.isSpaceConstrained || this.additionalTime > 0);
 			}
 		}
 		
@@ -44,13 +44,13 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 				var camera = IShoulderSurfing.getInstance().getCamera();
 				this.isSpaceConstrained = isSpaceConstrained(camera);
 				if (this.isSpaceConstrained) {
-					this.extendedTime = perspectiveConfig.getAdditionalTemporaryFirstPersonTimeInConstrainedSpaces();
-				} else if (this.extendedTime > 0) {
-					this.extendedTime--;
+					this.additionalTime = perspectiveConfig.getTemporaryFirstPersonInConstrainedSpacesAdditionalTime();
+				} else if (this.additionalTime > 0) {
+					this.additionalTime--;
 				}
 			} else {
 				this.isSpaceConstrained = false;
-				this.extendedTime = 0;
+				this.additionalTime = 0;
 			}
 		}
 		
