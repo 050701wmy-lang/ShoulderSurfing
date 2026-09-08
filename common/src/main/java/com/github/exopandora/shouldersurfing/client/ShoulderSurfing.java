@@ -90,8 +90,8 @@ public class ShoulderSurfing implements IShoulderSurfing {
 		}
 		if (this.isShoulderSurfing) {
 			if (EventHooks.isTemporaryFirstPerson()) {
-				this.changePerspective(Perspective.FIRST_PERSON, false);
 				this.isTemporaryFirstPerson = true;
+				this.changePerspective(Perspective.FIRST_PERSON, false);
 			}
 		} else if (this.isTemporaryFirstPerson) {
 			if (!EventHooks.isTemporaryFirstPerson()) {

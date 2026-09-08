@@ -243,8 +243,12 @@
 
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.enabled": "Enabled",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.enabled.tooltip": "Whether to switch to first person perspective temporarily when entering areas with limited height. For example, small buildings or caves.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.minimum_time": "Minimum time",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.minimum_time.tooltip": "The minium time in ticks the temporary first will be active when entering a constrained space.",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.additional_time": "Additional time",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.additional_time.tooltip": "The additional time in ticks the perspective will stay in temporary first person after leaving a constrained space.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.cooldown_time": "Cooldown time",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.cooldown_time.tooltip": "The time in ticks the temporary first will be on cooldown before it can be entered again.",
 
   "${modId}.configuration.offset_threshold.button": "Edit",
   "${modId}.configuration.offset_threshold": "Offset thresholds",

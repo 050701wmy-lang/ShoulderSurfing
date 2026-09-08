@@ -3,6 +3,7 @@ package com.github.exopandora.shouldersurfing.plugin;
 import com.github.exopandora.shouldersurfing.ShoulderSurfingCommon;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.ComputeCameraEntityTransparencyEventHandler;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.ComputeTemporaryFirstPersonStateEventHandler;
+import com.github.exopandora.shouldersurfing.api.client.event.handler.PerspectiveChangedEventHandler;
 import com.github.exopandora.shouldersurfing.api.client.event.handler.TickEventHandler;
 import com.github.exopandora.shouldersurfing.api.event.IEventBus;
 import com.github.exopandora.shouldersurfing.api.plugin.IShoulderSurfingPlugin;
@@ -61,6 +62,7 @@ public class BuiltinPlugin implements IShoulderSurfingPlugin {
 		eventBus.register(4000, ComputeTargetCameraOffsetEventHandlerImpl.OffsetLimits.INSTANCE);
 		eventBus.register(ComputeTemporaryFirstPersonStateEventHandlerImpl.WhenAiming.INSTANCE);
 		eventBus.register((ComputeTemporaryFirstPersonStateEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);
+		eventBus.register((PerspectiveChangedEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);
 		eventBus.register((TickEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);
 		eventBus.register(ComputeCameraSwayEventHandlerImpl.INSTANCE);
 		eventBus.register(ComputeCameraDragEventHandlerImpl.INSTANCE);

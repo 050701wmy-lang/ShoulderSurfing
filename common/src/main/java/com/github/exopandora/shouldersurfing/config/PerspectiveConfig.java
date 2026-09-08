@@ -18,7 +18,9 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	private final ConfigValue<Perspective> defaultPerspective;
 	private final BooleanValue isPerspectivePersistent;
 	private final BooleanValue isTemporaryFirstPersonInConstrainedSpacesEnabled;
+	private final IntValue temporaryFirstPersonInConstrainedSpacesMinimumTime;
 	private final IntValue temporaryFirstPersonInConstrainedSpacesAdditionalTime;
+	private final IntValue temporaryFirstPersonInConstrainedSpacesCooldownTime;
 	private final DoubleValue temporaryFirstPersonOffsetXThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetYThreshold;
 	private final DoubleValue temporaryFirstPersonOffsetZThreshold;
@@ -63,10 +65,20 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.enabled")
 			.define("enabled", false);
 		
+		this.temporaryFirstPersonInConstrainedSpacesMinimumTime = builder
+			.comment("The minium time in ticks the temporary first will be active when entering a constrained space.")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.minimum_time")
+			.defineInRange("minimum_time", 60, 0, Integer.MAX_VALUE);
+		
 		this.temporaryFirstPersonInConstrainedSpacesAdditionalTime = builder
 			.comment("The additional time in ticks the perspective will stay in temporary first person after leaving a constrained space.")
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.additional_time")
-			.defineInRange("additional_time", 10, 0, Integer.MAX_VALUE);
+			.defineInRange("additional_time", 20, 0, Integer.MAX_VALUE);
+		
+		this.temporaryFirstPersonInConstrainedSpacesCooldownTime = builder
+			.comment("The time in ticks the temporary first will be on cooldown before it can be entered again.")
+			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.cooldown_time")
+			.defineInRange("cooldown_time", 20, 0, Integer.MAX_VALUE);
 		
 		builder.push("offset_threshold");
 		
@@ -130,8 +142,18 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 	}
 	
 	@Override
+	public int getTemporaryFirstPersonInConstrainedSpacesMinimumTime() {
+		return this.temporaryFirstPersonInConstrainedSpacesMinimumTime.get();
+	}
+	
+	@Override
 	public int getTemporaryFirstPersonInConstrainedSpacesAdditionalTime() {
 		return this.temporaryFirstPersonInConstrainedSpacesAdditionalTime.get();
+	}
+	
+	@Override
+	public int getTemporaryFirstPersonInConstrainedSpacesCooldownTime() {
+		return this.temporaryFirstPersonInConstrainedSpacesCooldownTime.get();
 	}
 	
 	@Override
