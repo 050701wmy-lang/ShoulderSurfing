@@ -48,6 +48,9 @@ public class ComputeTemporaryFirstPersonStateEventHandlerImpl {
 				} else if (this.extendedTime > 0) {
 					this.extendedTime--;
 				}
+			} else {
+				this.isSpaceConstrained = false;
+				this.extendedTime = 0;
 			}
 		}
 		
