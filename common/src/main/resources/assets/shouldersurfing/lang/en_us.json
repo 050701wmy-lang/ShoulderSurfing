@@ -255,11 +255,11 @@
   "${modId}.configuration.offset_threshold.tooltip": "Temporary first person offset threshold settings.",
 
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_x": "x-offset threshold",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_x.tooltip": "Temporary first person x-offset threshold.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_x.tooltip": "The x-axis camera offset threshold. When the x-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_y": "y-offset threshold",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_y.tooltip": "Temporary first person y-offset threshold.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_y.tooltip": "The y-axis camera offset threshold. When the y-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.",
   "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_z": "z-offset threshold",
-  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_z.tooltip": "Temporary first person z-offset threshold.",
+  "${modId}.configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_z.tooltip": "The z-axis camera offset threshold. When the z-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.",
 
   "${modId}.configuration.player.button": "Edit",
   "${modId}.configuration.player": "Player",

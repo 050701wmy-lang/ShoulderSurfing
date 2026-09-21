@@ -83,17 +83,17 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 		builder.push("offset_threshold");
 		
 		this.temporaryFirstPersonOffsetXThreshold = builder
-			.comment("Temporary first person x-offset threshold.")
+			.comment("The x-axis camera offset threshold. When the x-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.")
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_x")
 			.defineInRange("offset_x", 0.5D, 0, Double.MAX_VALUE);
 		
 		this.temporaryFirstPersonOffsetYThreshold = builder
-			.comment("Temporary first person y-offset threshold.")
+			.comment("The y-axis camera offset threshold. When the y-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.")
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_y")
 			.defineInRange("offset_y", 0.0D, 0, Double.MAX_VALUE);
 		
 		this.temporaryFirstPersonOffsetZThreshold = builder
-			.comment("Temporary first person z-offset threshold.")
+			.comment("The z-axis camera offset threshold. When the z-axis camera offset falls below the configured threshold, the perspective will switch to temporary first person.")
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.offset_threshold.offset_z")
 			.defineInRange("offset_z", 0.5D, 0, Double.MAX_VALUE);
 		
