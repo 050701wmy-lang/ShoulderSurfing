@@ -78,7 +78,7 @@ public class PerspectiveConfig implements IPerspectiveConfig {
 		this.temporaryFirstPersonInConstrainedSpacesCooldownTime = builder
 			.comment("The time in ticks the temporary first will be on cooldown before it can be entered again.")
 			.translation(MOD_ID + ".configuration.perspective.temporary_first_person_in_constrained_spaces.cooldown_time")
-			.defineInRange("cooldown_time", 20, 0, Integer.MAX_VALUE);
+			.defineInRange("cooldown_time", 60, 0, Integer.MAX_VALUE);
 		
 		builder.push("offset_threshold");
 		
