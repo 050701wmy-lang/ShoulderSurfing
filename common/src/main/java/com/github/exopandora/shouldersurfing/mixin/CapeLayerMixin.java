@@ -1,6 +1,8 @@
 package com.github.exopandora.shouldersurfing.mixin;
 
 import com.github.exopandora.shouldersurfing.config.Config;
+import com.github.exopandora.shouldersurfing.client.ShoulderSurfing;
+import com.github.exopandora.shouldersurfing.client.renderer.rendertype.ShoulderSurfingRenderTypes;
 import net.minecraft.client.renderer.entity.layers.CapeLayer;
 import net.minecraft.client.renderer.rendertype.RenderType;
 import net.minecraft.client.renderer.rendertype.RenderTypes;
@@ -21,6 +23,9 @@ class CapeLayerMixin {
 	)
 	private RenderType entitySolid(Identifier texture) {
 		if (Config.CLIENT.getPlayerConfig().isPlayerTransparencyEnabled()) {
+			if (ShoulderSurfing.getInstance().getCameraEntityRenderer().isRenderingFadedCameraEntity()) {
+				return ShoulderSurfingRenderTypes.fadedEntity(texture);
+			}
 			return RenderTypes.entityTranslucentCullItemTarget(texture);
 		}
 		return RenderTypes.entitySolid(texture);

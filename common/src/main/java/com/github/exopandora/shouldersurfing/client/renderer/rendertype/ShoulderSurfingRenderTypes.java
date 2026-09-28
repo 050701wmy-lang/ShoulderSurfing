@@ -1,6 +1,7 @@
 package com.github.exopandora.shouldersurfing.client.renderer.rendertype;
 
 import com.github.exopandora.shouldersurfing.mixin.RenderTypeAccessor;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.client.renderer.feature.ItemFeatureRenderer;
 import net.minecraft.client.renderer.rendertype.LayeringTransform;
@@ -14,6 +15,25 @@ import net.minecraft.util.Util;
 import java.util.function.Function;
 
 public class ShoulderSurfingRenderTypes {
+	private static final OutputTarget TRANSLUCENT_TERRAIN_TARGET = new OutputTarget(
+		"shouldersurfing_translucent_terrain",
+		() -> Minecraft.getInstance().levelRenderer.translucentTarget()
+	);
+	private static final Function<Identifier, RenderType> FADED_ARMOR = Util.memoize(texture ->
+		RenderTypeAccessor.invokeCreate("shouldersurfing_faded_armor", RenderSetup.builder(RenderPipelines.ARMOR_TRANSLUCENT)
+			.withTexture("Sampler0", texture).useLightmap().useOverlay()
+			.setLayeringTransform(LayeringTransform.VIEW_OFFSET_Z_LAYERING)
+			.affectsCrumbling().sortOnUpload()
+			.setOutputTarget(TRANSLUCENT_TERRAIN_TARGET)
+			.setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup())
+	);
+	private static final Function<Identifier, RenderType> FADED_ENTITY = Util.memoize(texture ->
+		RenderTypeAccessor.invokeCreate("shouldersurfing_faded_entity", RenderSetup.builder(RenderPipelines.ENTITY_TRANSLUCENT)
+			.withTexture("Sampler0", texture).useLightmap().useOverlay()
+			.affectsCrumbling().sortOnUpload()
+			.setOutputTarget(TRANSLUCENT_TERRAIN_TARGET)
+			.setOutline(RenderSetup.OutlineProperty.AFFECTS_OUTLINE).createRenderSetup())
+	);
 	private static final RenderType ARMOR_ENTITY_GLINT_ITEM_TARGET = RenderTypeAccessor.invokeCreate(
 		"armor_entity_glint_item_target",
 		RenderSetup.builder(RenderPipelines.GLINT)
@@ -61,5 +81,13 @@ public class ShoulderSurfingRenderTypes {
 	
 	public static RenderType entityTranslucentItemTarget(Identifier texture) {
 		return ENTITY_TRANSLUCENT_ITEM_TARGET.apply(texture);
+	}
+
+	public static RenderType fadedArmor(Identifier texture) {
+		return FADED_ARMOR.apply(texture);
+	}
+
+	public static RenderType fadedEntity(Identifier texture) {
+		return FADED_ENTITY.apply(texture);
 	}
 }

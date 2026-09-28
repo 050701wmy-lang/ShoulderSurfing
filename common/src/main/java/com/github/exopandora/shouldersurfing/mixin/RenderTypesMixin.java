@@ -1,6 +1,7 @@
 package com.github.exopandora.shouldersurfing.mixin;
 
 import com.github.exopandora.shouldersurfing.client.renderer.rendertype.ShoulderSurfingRenderTypes;
+import com.github.exopandora.shouldersurfing.client.ShoulderSurfing;
 import com.github.exopandora.shouldersurfing.config.Config;
 import com.github.exopandora.shouldersurfing.util.Util;
 import net.minecraft.client.renderer.rendertype.RenderType;
@@ -27,6 +28,10 @@ class RenderTypesMixin {
 	)
 	private static void armorCutoutNoCull(Identifier texture, CallbackInfoReturnable<RenderType> cir) {
 		if (Config.CLIENT.getPlayerConfig().isPlayerTransparencyEnabled()) {
+			if (ShoulderSurfing.getInstance().getCameraEntityRenderer().isRenderingFadedCameraEntity()) {
+				cir.setReturnValue(ShoulderSurfingRenderTypes.fadedArmor(texture));
+				return;
+			}
 			if (Util.isImprovedTransparencyEnabled() && !Util.isCameraEntityRidingBoat()) {
 				cir.setReturnValue(ShoulderSurfingRenderTypes.armorTranslucentItemTarget(texture));
 			} else {

@@ -16,12 +16,12 @@ The previous standalone Unified Camera 0.1.23 project remains in the parent dire
 
 Already provided by upstream 5.1.1: shoulder offsets and presets, free look, decoupled camera, perspective controls, adaptive and dynamic crosshair, player transparency, configurable collision, drag and sway, temporary first person in constrained spaces, and Chinese translations.
 
-Migrated here: optional Wynntils 5 cutscene detection through the upstream temporary-first-person event. The setting is under Integrations → Wynntils.
+Migrated here: optional Wynntils 5 cutscene detection through the upstream temporary-first-person event. The setting is under Integrations → Wynntils. When the local avatar fades, its model, armor, and cape use the translucent terrain depth target and submit after terrain, carrying over the ice-occlusion fix from the standalone mod.
 
-Still to reconcile with the previous implementation and verify in game: fixed-crosshair projectile alignment; transparent player depth behind ice; smooth continuous camera distance controls; shoulder-side selection when mounting; transitions when entering and leaving a mount; automatic perspective by vehicle type; detached camera and zoom; and the precise constrained-space transition preferred by the user. Equivalent upstream behavior must be verified before any old implementation is ported.
+Still to reconcile with the previous implementation and verify in game: fixed-crosshair projectile alignment; the migrated transparent player depth behind ice; smooth continuous camera distance controls; shoulder-side selection when mounting; transitions when entering and leaving a mount; automatic perspective by vehicle type; detached camera and zoom; and the precise constrained-space transition preferred by the user. Equivalent upstream behavior must be verified before any old implementation is ported.
 
 ## Testing and installation
 
 Build the Fabric module with `./gradlew :fabric:build`. The fork requires Fabric API and Forge Config API Port on Minecraft 26.2. Use only one camera mod during tests: remove the standalone `unifiedcamera-*.jar` and any official ShoulderSurfing jar before installing this fork's Fabric jar. Preserve the old jar and config so they can be restored if the migration needs rollback. The user performs in-game testing.
 
-The first build on this machine has not completed because external Gradle repositories terminated TLS handshakes while downloading build dependencies. No installable fork jar has been verified yet.
+The first build on this machine has not completed because Java's TLS connection to external Gradle repositories terminates during dependency downloads. GitHub Actions is enabled on the fork for build verification. No installable fork jar has been verified yet.

@@ -89,6 +89,10 @@ public class CameraEntityRenderer implements ICameraEntityRenderer {
 	public boolean isRenderingCameraEntity() {
 		return this.isRenderingCameraEntity;
 	}
+
+	public boolean isRenderingFadedCameraEntity() {
+		return this.isRenderingCameraEntity && this.cameraEntityAlpha < 0.999F;
+	}
 	
 	@Override
 	public float getCameraEntityAlpha() {

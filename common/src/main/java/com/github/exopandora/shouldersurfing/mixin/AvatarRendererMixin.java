@@ -25,6 +25,9 @@ abstract class AvatarRendererMixin extends LivingEntityRenderer<LivingEntity, Li
 	) {
 		var instance = ShoulderSurfing.getInstance();
 		if (instance.getCameraEntityRenderer().isEntityTransparentPlayer(state)) {
+			if (instance.getCameraEntityRenderer().isRenderingFadedCameraEntity()) {
+				return ShoulderSurfingRenderTypes.fadedEntity(this.getTextureLocation(state));
+			}
 			return ShoulderSurfingRenderTypes.entityTranslucentItemTarget(this.getTextureLocation(state));
 		}
 		return super.getRenderType(state, isBodyVisible, forceTransparent, appearGlowing);
