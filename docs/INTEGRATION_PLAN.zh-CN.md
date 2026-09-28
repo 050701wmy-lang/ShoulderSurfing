@@ -48,3 +48,9 @@ git log --oneline integration/fabric-26.2..upstream/master
 ```
 
 先查看候选提交是否改动 `api/`、`common/`、`fabric/` 或构建版本。适用于 26.2 的修复可 `git cherry-pick <sha>`；整批合并前需要检查版本目录和 Fabric 元数据，完成构建与客户端验证后再推送。
+
+## 当前验证状态
+
+- 已修正 Gradle 9.5.1 配置阶段的仓库声明冲突：`settings.gradle.kts` 中的插件仓库改用普通 `content` 过滤。
+- `:fabric:build` 已进入 Fabric 项目配置，但依赖解析时 `api.modrinth.com` 的 TLS 握手中断，未到 Java 编译阶段。`common` 和 `fabric` 的 Cobblemon 编译依赖都使用这个 Maven 服务；在网络恢复前不能宣称 jar 已通过构建。
+- 尚未执行游戏客户端验证，五个来源的新增功能也尚未实现。此分支目前是可同步上游的 MC 26.2 基底与实施方案。
