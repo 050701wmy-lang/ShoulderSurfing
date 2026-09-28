@@ -2,28 +2,19 @@
 
 pluginManagement {
     repositories {
-        exclusiveContent {
-            forRepository {
-                maven("https://maven.fabricmc.net/")
-            }
-            filter {
+        maven("https://maven.fabricmc.net/") {
+            content {
                 includeGroupAndSubgroups("net.fabricmc")
                 includeGroup("fabric-loom")
             }
         }
-        exclusiveContent {
-            forRepository {
-                maven("https://repo.spongepowered.org/repository/maven-public/")
-            }
-            filter {
+        maven("https://repo.spongepowered.org/repository/maven-public/") {
+            content {
                 includeGroupAndSubgroups("org.spongepowered")
             }
         }
-        exclusiveContent {
-            forRepository {
-                maven("https://maven.neoforged.net/releases/")
-            }
-            filter {
+        maven("https://maven.neoforged.net/releases/") {
+            content {
                 includeGroupAndSubgroups("net.neoforged")
                 includeGroup("codechicken")
                 includeGroup("net.covers1624")
