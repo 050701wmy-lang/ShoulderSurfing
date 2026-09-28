@@ -403,6 +403,8 @@
   "${modId}.configuration.integrations.button": "Edit",
   "${modId}.configuration.integrations": "Integrations",
   "${modId}.configuration.integrations.tooltip": "Integration settings.",
+  "${modId}.configuration.integrations.wynntils.cutscene_first_person": "Temporary first person in Wynntils cutscenes",
+  "${modId}.configuration.integrations.wynntils.cutscene_first_person.tooltip": "Enter first person while Wynntils reports a cutscene, then return to shoulder view.",
 
   "${modId}.configuration.curios.button": "Edit",
   "${modId}.configuration.curios": "Curios API",

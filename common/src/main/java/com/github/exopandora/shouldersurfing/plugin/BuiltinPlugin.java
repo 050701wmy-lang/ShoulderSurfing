@@ -25,6 +25,7 @@ import com.github.exopandora.shouldersurfing.compat.Mods;
 import com.github.exopandora.shouldersurfing.compat.cobblemon.event.handler.CobblemonEventHandler;
 import com.github.exopandora.shouldersurfing.compat.create.event.handler.CreateModEventHandler;
 import com.github.exopandora.shouldersurfing.compat.curios.event.handler.ICuriosEventHandler;
+import com.github.exopandora.shouldersurfing.compat.wynntils.WynntilsCutsceneEventHandler;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ServiceLoader;
@@ -61,6 +62,7 @@ public class BuiltinPlugin implements IShoulderSurfingPlugin {
 		eventBus.register(3000, ComputeTargetCameraOffsetEventHandlerImpl.EntityScale.INSTANCE);
 		eventBus.register(4000, ComputeTargetCameraOffsetEventHandlerImpl.OffsetLimits.INSTANCE);
 		eventBus.register(ComputeTemporaryFirstPersonStateEventHandlerImpl.WhenAiming.INSTANCE);
+		eventBus.register(WynntilsCutsceneEventHandler.INSTANCE);
 		eventBus.register((ComputeTemporaryFirstPersonStateEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);
 		eventBus.register((PerspectiveChangedEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);
 		eventBus.register((TickEventHandler) ComputeTemporaryFirstPersonStateEventHandlerImpl.ConstrainedSpace.INSTANCE);

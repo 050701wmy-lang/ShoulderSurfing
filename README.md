@@ -1,4 +1,6 @@
 # Shoulder Surfing Reloaded
+
+This fork tracks the upstream `26.2` branch and carries Unified Camera additions. The migration is in progress; see [UNIFIED_CAMERA_MIGRATION.md](UNIFIED_CAMERA_MIGRATION.md) before building or installing it. The original project and MIT license remain credited below.
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/243190?style=flat-square&logo=curseforge&label=CurseForge&color=%23F16436)](https://www.curseforge.com/minecraft/mc-mods/shoulder-surfing-reloaded) [![Modrinth Downloads](https://img.shields.io/modrinth/dt/kepjj2sy?style=flat-square&logo=modrinth&label=Modrinth&color=%2300AF5C)](https://modrinth.com/mod/shoulder-surfing-reloaded) ![GitHub License](https://img.shields.io/github/license/Exopandora/ShoulderSurfing?style=flat-square&label=License)
 
 Shoulder Surfing Reloaded is a highly configurable third person camera mod for Minecraft.

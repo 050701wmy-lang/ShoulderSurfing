@@ -11,12 +11,19 @@ import java.util.List;
 import static com.github.exopandora.shouldersurfing.ShoulderSurfingCommon.MOD_ID;
 
 public class IntegrationsConfig implements IIntegrationsConfig {
+	private final ModConfigSpec.BooleanValue wynntilsCutsceneFirstPerson;
 	private final ConfigValue<List<? extends String>> curiosAdaptiveCrosshairItems;
 	private final ConfigValue<List<? extends String>> curiosAdaptiveCrosshairDefaultItemComponents;
 	private final ConfigValue<List<? extends String>> curiosAdaptiveCrosshairItemComponents;
 	
 	protected IntegrationsConfig(ModConfigSpec.Builder builder) {
 		builder.push("integrations");
+		builder.push("wynntils");
+		this.wynntilsCutsceneFirstPerson = builder
+			.comment("Temporarily enter first person while Wynntils reports an active cutscene.")
+			.translation(MOD_ID + ".configuration.integrations.wynntils.cutscene_first_person")
+			.define("cutscene_first_person", true);
+		builder.pop();
 		builder.push("curios");
 		
 		this.curiosAdaptiveCrosshairItems = builder
@@ -38,6 +45,11 @@ public class IntegrationsConfig implements IIntegrationsConfig {
 		builder.pop();
 	}
 	
+	@Override
+	public boolean isWynntilsCutsceneFirstPersonEnabled() {
+		return this.wynntilsCutsceneFirstPerson.get();
+	}
+
 	@Override
 	public List<? extends String> getCuriosAdaptiveCrosshairItems() {
 		return this.curiosAdaptiveCrosshairItems.get();

@@ -375,6 +375,8 @@
   "${modId}.configuration.integrations.button": "编辑",
   "${modId}.configuration.integrations": "集成",
   "${modId}.configuration.integrations.tooltip": "集成设置。",
+  "${modId}.configuration.integrations.wynntils.cutscene_first_person": "Wynntils 过场时临时第一人称",
+  "${modId}.configuration.integrations.wynntils.cutscene_first_person.tooltip": "Wynntils 报告过场播放时临时切换第一人称，结束后恢复越肩视角。",
 
   "${modId}.configuration.curios.button": "编辑",
   "${modId}.configuration.curios": "Curios API",
