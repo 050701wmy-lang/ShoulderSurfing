@@ -21,6 +21,7 @@ public class Config {
 	
 	public static class ClientConfig implements IClientConfig {
 		private final CameraConfig cameraConfig;
+		private final AddedFeaturesConfig addedFeaturesConfig;
 		private final PerspectiveConfig perspectiveConfig;
 		private final PlayerConfig playerConfig;
 		private final ObjectPickerConfig objectPickerConfig;
@@ -32,6 +33,7 @@ public class Config {
 		public ClientConfig(ModConfigSpec.Builder builder) {
 			this.audioConfig = new AudioConfig(builder);
 			this.cameraConfig = new CameraConfig(builder);
+			this.addedFeaturesConfig = new AddedFeaturesConfig(builder);
 			this.crosshairConfig = new CrosshairConfig(builder);
 			this.integrationsConfig = new IntegrationsConfig(builder);
 			this.objectPickerConfig = new ObjectPickerConfig(builder);
@@ -42,6 +44,10 @@ public class Config {
 		@Override
 		public CameraConfig getCameraConfig() {
 			return this.cameraConfig;
+		}
+
+		public AddedFeaturesConfig getAddedFeaturesConfig() {
+			return this.addedFeaturesConfig;
 		}
 		
 		@Override

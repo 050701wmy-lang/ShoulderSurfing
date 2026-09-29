@@ -511,7 +511,9 @@ public class CameraConfig implements ICameraConfig {
 	
 	@Override
 	public double getOffsetZ() {
-		return this.offsetZ.get();
+		var features = Config.CLIENT.getAddedFeaturesConfig();
+		return features.isDistanceScrollEnabled()
+			? Math.min(this.offsetZ.get(), features.getMaximumDistance()) : this.offsetZ.get();
 	}
 	
 	@Override
@@ -854,8 +856,9 @@ public class CameraConfig implements ICameraConfig {
 	}
 
 	public void adjustThirdPersonDistance(double scrollAmount) {
-		double next = this.getOffsetZ() + scrollAmount * 1.0D;
-		Config.CLIENT.set(this.offsetZ, Math.clamp(next, 1.0D, 100.0D));
+		var features = Config.CLIENT.getAddedFeaturesConfig();
+		double next = this.getOffsetZ() + scrollAmount * features.getDistanceScrollStep();
+		Config.CLIENT.set(this.offsetZ, Math.clamp(next, 1.0D, features.getMaximumDistance()));
 	}
 	
 	public void toggleOffsetXPreset() {

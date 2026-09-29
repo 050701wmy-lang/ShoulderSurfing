@@ -130,10 +130,12 @@ abstract class CameraMixin implements CameraDuck {
 		index = 0
 	)
 	private float adjustVanillaThirdPersonDistance(float distance) {
-		if (Perspective.current() == Perspective.SHOULDER_SURFING) {
+		var features = Config.CLIENT.getAddedFeaturesConfig();
+		if (Perspective.current() == Perspective.SHOULDER_SURFING || !features.isDistanceScrollEnabled()) {
 			return distance;
 		}
-		return Math.clamp(distance + (float) Config.CLIENT.getCameraConfig().getOffsetZ() - 4.0F, 1.0F, 100.0F);
+		return Math.clamp(distance + (float) Config.CLIENT.getCameraConfig().getOffsetZ() - 4.0F,
+			1.0F, (float) features.getMaximumDistance());
 	}
 	
 	@Unique

@@ -79,16 +79,18 @@ public final class CameraFeatures {
 	}
 
 	private static Reason reason(Minecraft minecraft) {
-		if (minecraft.player.isDeadOrDying()) {
+		var features = Config.CLIENT.getAddedFeaturesConfig();
+		if (features.isDeathFirstPersonEnabled() && minecraft.player.isDeadOrDying()) {
 			return Reason.DEATH;
 		}
-		if (isWynncraft(minecraft) && minecraft.gameMode.getPlayerMode() == GameType.SPECTATOR) {
+		if (features.isWynncraftCutsceneFirstPersonEnabled() && isWynncraft(minecraft)
+			&& minecraft.gameMode.getPlayerMode() == GameType.SPECTATOR) {
 			return Reason.CUTSCENE;
 		}
-		if (minecraft.player.isPassenger()) {
+		if (features.isRidingThirdPersonEnabled() && minecraft.player.isPassenger()) {
 			return Reason.RIDING;
 		}
-		if (minecraft.player.isFallFlying()) {
+		if (features.isElytraThirdPersonEnabled() && minecraft.player.isFallFlying()) {
 			return Reason.ELYTRA;
 		}
 		return Reason.NONE;
@@ -109,7 +111,8 @@ public final class CameraFeatures {
 
 	public static boolean onScroll(double amount) {
 		var minecraft = Minecraft.getInstance();
-		if (!THIRD_PERSON_DISTANCE.isDown() || minecraft.gui.screen() != null || minecraft.player == null
+		if (!Config.CLIENT.getAddedFeaturesConfig().isDistanceScrollEnabled()
+			|| !THIRD_PERSON_DISTANCE.isDown() || minecraft.gui.screen() != null || minecraft.player == null
 			|| Perspective.current() == Perspective.FIRST_PERSON || amount == 0.0D) {
 			return false;
 		}

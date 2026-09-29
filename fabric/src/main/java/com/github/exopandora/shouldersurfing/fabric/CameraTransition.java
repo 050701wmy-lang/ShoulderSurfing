@@ -1,13 +1,13 @@
 package com.github.exopandora.shouldersurfing.fabric;
 
 import com.github.exopandora.shouldersurfing.api.client.Perspective;
+import com.github.exopandora.shouldersurfing.config.Config;
 import net.minecraft.client.Camera;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.phys.Vec3;
 
 /** Interpolates between already collision-adjusted camera positions. */
 public final class CameraTransition {
-	private static final long DURATION_NANOS = 250_000_000L;
 	private static Vec3 startOffset;
 	private static long startTime;
 
@@ -15,6 +15,10 @@ public final class CameraTransition {
 	}
 
 	public static void onPerspectiveChange(Perspective next) {
+		if (!Config.CLIENT.getAddedFeaturesConfig().isSmoothPerspectiveEnabled()) {
+			reset();
+			return;
+		}
 		var minecraft = Minecraft.getInstance();
 		if (minecraft.player == null || minecraft.getCameraEntity() != minecraft.player
 			|| minecraft.gameRenderer.mainCamera().entity() != minecraft.player
@@ -27,6 +31,11 @@ public final class CameraTransition {
 	}
 
 	public static Vec3 position(Camera camera, float partialTick) {
+		var features = Config.CLIENT.getAddedFeaturesConfig();
+		if (!features.isSmoothPerspectiveEnabled() || features.getPerspectiveTransitionMilliseconds() == 0) {
+			reset();
+			return camera.position();
+		}
 		if (startOffset == null) {
 			return camera.position();
 		}
@@ -35,7 +44,8 @@ public final class CameraTransition {
 			startOffset = null;
 			return camera.position();
 		}
-		double progress = (double) (System.nanoTime() - startTime) / DURATION_NANOS;
+		double progress = (double) (System.nanoTime() - startTime)
+			/ (features.getPerspectiveTransitionMilliseconds() * 1_000_000.0D);
 		if (progress >= 1.0D) {
 			startOffset = null;
 			return camera.position();

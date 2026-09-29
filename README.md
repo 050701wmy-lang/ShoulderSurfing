@@ -8,6 +8,8 @@ This fork builds on [Shoulder Surfing Reloaded](https://github.com/Exopandora/Sh
 
 The mod ID remains `shouldersurfing` to retain the existing configuration. See [the integration plan](docs/INTEGRATION_PLAN.zh-CN.md) for implementation details and current verification limits. Build the Fabric jar with `gradlew :fabric:build`.
 
+The client configuration screen has an **Added Features** section for distance scrolling, perspective transitions, riding, elytra, death, and Wynncraft cutscenes. The distance key can be changed in Minecraft's Controls screen.
+
 ## Upstream documentation
 
 # Shoulder Surfing Reloaded
