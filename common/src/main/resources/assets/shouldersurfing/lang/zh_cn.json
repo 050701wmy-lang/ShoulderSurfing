@@ -414,5 +414,6 @@
   "key.${modId}.enter_first_person": "进入第一人称",
   "key.${modId}.enter_third_person_front": "进入第三人称（前）",
   "key.${modId}.enter_third_person_back": "进入第三人称（后）",
-  "key.${modId}.enter_shoulder_surfing": "进入越肩视角"
+  "key.${modId}.enter_shoulder_surfing": "进入越肩视角",
+  "key.${modId}.zoom": "动态缩放"
 }

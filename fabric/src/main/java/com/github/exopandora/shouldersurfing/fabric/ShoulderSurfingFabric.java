@@ -6,6 +6,7 @@ import com.github.exopandora.shouldersurfing.config.Config;
 import fuzs.forgeconfigapiport.fabric.api.v5.ConfigRegistry;
 import fuzs.forgeconfigapiport.fabric.api.v5.client.ConfigScreenFactoryRegistry;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.neoforged.fml.config.ModConfig.Type;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
@@ -34,5 +35,7 @@ public class ShoulderSurfingFabric implements ClientModInitializer {
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_THIRD_PERSON_FRONT);
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_THIRD_PERSON_BACK);
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_SHOULDER_SURFING);
+		KeyMappingHelper.registerKeyMapping(CameraFeatures.ZOOM);
+		ClientTickEvents.END_CLIENT_TICK.register(CameraFeatures::tick);
 	}
 }

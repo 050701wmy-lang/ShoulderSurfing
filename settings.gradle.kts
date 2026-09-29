@@ -35,7 +35,5 @@ include(
     ":api",
     ":common",
     ":compat",
-    ":forge",
-    ":neoforge",
     ":fabric"
 )

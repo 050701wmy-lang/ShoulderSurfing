@@ -6,10 +6,14 @@
   "compatibilityLevel": "JAVA_21",
   "client": [
     "CameraMixin",
+    "CameraTransitionMixin",
+    "CameraZoomMixin",
     "HudMixin",
     "LevelRendererMixin",
     "LocalPlayerMixin",
-    "MinecraftMixin"
+    "MinecraftMixin",
+    "MouseHandlerZoomMixin",
+    "ShoulderSurfingTransitionMixin"
   ],
   "injectors": {
     "defaultRequire": 1

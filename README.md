@@ -1,3 +1,15 @@
+# Better Shoulder Surfing (Fabric 26.2 development branch)
+
+This fork builds on [Shoulder Surfing Reloaded](https://github.com/Exopandora/ShoulderSurfing). The Fabric 26.2 build adds:
+
+- Dynamic zoom: hold `Z`, scroll while holding to adjust magnification, release to restore FOV.
+- A short camera position transition when changing perspective.
+- One automatic perspective controller: riding and elytra flight use the shoulder view; death and spectator-mode cutscenes on Wynncraft use first person. The previous perspective returns afterward, unless you changed it manually.
+
+The mod ID remains `shouldersurfing` to retain the existing configuration. See [the integration plan](docs/INTEGRATION_PLAN.zh-CN.md) for implementation details and current verification limits. Build the Fabric jar with `gradlew :fabric:build`.
+
+## Upstream documentation
+
 # Shoulder Surfing Reloaded
 [![CurseForge Downloads](https://img.shields.io/curseforge/dt/243190?style=flat-square&logo=curseforge&label=CurseForge&color=%23F16436)](https://www.curseforge.com/minecraft/mc-mods/shoulder-surfing-reloaded) [![Modrinth Downloads](https://img.shields.io/modrinth/dt/kepjj2sy?style=flat-square&logo=modrinth&label=Modrinth&color=%2300AF5C)](https://modrinth.com/mod/shoulder-surfing-reloaded) ![GitHub License](https://img.shields.io/github/license/Exopandora/ShoulderSurfing?style=flat-square&label=License)
 

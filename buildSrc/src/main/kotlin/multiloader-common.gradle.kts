@@ -65,11 +65,8 @@ repositories {
             includeGroup("top.theillusivec4.curios")
         }
     }
-    exclusiveContent {
-        forRepository {
-            maven("https://api.modrinth.com/maven")
-        }
-        filter {
+    maven("https://api.modrinth.com/maven") {
+        content {
             includeGroup("maven.modrinth")
         }
     }
