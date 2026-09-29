@@ -173,7 +173,7 @@ public class CameraConfig implements ICameraConfig {
 		this.maxOffsetZ = builder
 			.comment("When z-offset is limited this is the maximum amount.")
 			.translation(MOD_ID + ".configuration.camera.offset.max.max_offset_z")
-			.defineInRange("max_offset_z", 5.0D, -Double.MAX_VALUE, Double.MAX_VALUE);
+			.defineInRange("max_offset_z", 100.0D, -Double.MAX_VALUE, Double.MAX_VALUE);
 		
 		builder.pop();
 		builder.push("limits");
@@ -851,6 +851,11 @@ public class CameraConfig implements ICameraConfig {
 	
 	public void adjustCameraOut() {
 		Config.CLIENT.set(this.offsetZ, this.addStep(this.getOffsetZ(), this.getMaxOffsetZ(), this.isOffsetZUnlimited()));
+	}
+
+	public void adjustThirdPersonDistance(double scrollAmount) {
+		double next = this.getOffsetZ() + scrollAmount * 1.0D;
+		Config.CLIENT.set(this.offsetZ, Math.clamp(next, 1.0D, 100.0D));
 	}
 	
 	public void toggleOffsetXPreset() {

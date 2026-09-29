@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.At.Shift;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -121,6 +122,18 @@ abstract class CameraMixin implements CameraDuck {
 		} else {
 			this.move(x, y, z);
 		}
+	}
+
+	@ModifyArg(
+		method = "alignWithEntity",
+		at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Camera;getMaxZoom(F)F"),
+		index = 0
+	)
+	private float adjustVanillaThirdPersonDistance(float distance) {
+		if (Perspective.current() == Perspective.SHOULDER_SURFING) {
+			return distance;
+		}
+		return Math.clamp(distance + (float) Config.CLIENT.getCameraConfig().getOffsetZ() - 4.0F, 1.0F, 100.0F);
 	}
 	
 	@Unique

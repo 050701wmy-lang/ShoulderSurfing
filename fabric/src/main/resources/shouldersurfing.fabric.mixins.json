@@ -7,12 +7,11 @@
   "client": [
     "CameraMixin",
     "CameraTransitionMixin",
-    "CameraZoomMixin",
     "HudMixin",
     "LevelRendererMixin",
     "LocalPlayerMixin",
     "MinecraftMixin",
-    "MouseHandlerZoomMixin",
+    "MouseHandlerDistanceMixin",
     "ShoulderSurfingTransitionMixin"
   ],
   "injectors": {

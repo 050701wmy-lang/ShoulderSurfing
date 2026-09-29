@@ -35,7 +35,7 @@ public class ShoulderSurfingFabric implements ClientModInitializer {
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_THIRD_PERSON_FRONT);
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_THIRD_PERSON_BACK);
 		KeyMappingHelper.registerKeyMapping(InputHandler.ENTER_SHOULDER_SURFING);
-		KeyMappingHelper.registerKeyMapping(CameraFeatures.ZOOM);
+		KeyMappingHelper.registerKeyMapping(CameraFeatures.THIRD_PERSON_DISTANCE);
 		ClientTickEvents.END_CLIENT_TICK.register(CameraFeatures::tick);
 	}
 }

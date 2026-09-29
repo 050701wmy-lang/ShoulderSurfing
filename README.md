@@ -2,7 +2,7 @@
 
 This fork builds on [Shoulder Surfing Reloaded](https://github.com/Exopandora/ShoulderSurfing). The Fabric 26.2 build adds:
 
-- Dynamic zoom: hold `Z`, scroll while holding to adjust magnification, release to restore FOV.
+- Adjustable third-person distance: hold `Right Ctrl` and scroll in shoulder, rear, or front third-person view to set a distance of 1–100 blocks. The same saved distance applies across these views, while vanilla collision handling remains active.
 - A short camera position transition when changing perspective.
 - One automatic perspective controller: riding and elytra flight use the shoulder view; death and spectator-mode cutscenes on Wynncraft use first person. The previous perspective returns afterward, unless you changed it manually.
 
